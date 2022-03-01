@@ -51,7 +51,7 @@ hist(sygnal1,50);
 
 %sygnal2 to sygnal1 pomnożony przez okno balcmana, można użyć funkcji z strony
 %https://www.mathworks.com/help/signal/ref/window.html
-okno=blackman(lenght(sygnal1));
+okno=blackman(length(t));
 
 for z=1:length(sygnal1)
         sygnal2(z)=okno(z)*sygnal1(z);
