@@ -56,24 +56,14 @@ for pom=1:length(t)
  try
  sygnal_out(pom) = (sygnal(pom-1)*A2)+sygnal(pom-2)*A1+sygnal(pom-3)*A0 - sygnal_out(pom-1)*B2 - sygnal_out(pom-2)*B1 - sygnal_out(pom-3)*B0;
  
-     catch
-     disp('hello')
-     sygnal_out(pom) = 0;
-     %nwm nie chce mi sie jakby to skutecznie rozkminic - no to juz chyba
-     %zadziabie ale no, nwm nwm
-     if pom == 1
-        sygnal_out(1) = 0*A2+0*A1+0*A0 - 0*B2 - 0*B1 - 0*B0;
-     elseif pom == 2
-        sygnal_out(2) = (sygnal(2-1)*A2)+0*A1+0*A0 - sygnal_out(2-1)*B2 - 0*B1 - 0*B0;
-     elseif pom == 3
-      sygnal_out(3) = (sygnal(3-1)*A2)+sygnal(3-2)*A1+0*A0 - sygnal_out(3-1)*B2 - sygnal_out(3-2)*B1 - 0*B0;
-     else
-%          ME = MException('MyComponent:noSuchVariable', ...
-%         'Variable %s not found',str);
-%         throw(ME)
-        disp('hello')
-     end
+ catch
+ disp('hello')
+ sygnal_out(pom) = 0;
+ if rzad_filtru == 2
+    sygnal_out(2) = (sygnal(2-1)*A2)+0*A1+0*A0 - sygnal_out(2-1)*B2 - 0*B1 - 0*B0;
  end
+ end
+
 end
 
 % disp('hello');
