@@ -24,6 +24,8 @@ rzad_filtru = 3;
 [l,m]=cheby2(rzad_filtru,0.99,2*pi*1000,'low','s');
 
 c2d(tf(l,m),1/fp)
+lz=cell2mat(ans.Numerator)
+mz=cell2mat(ans.Denominator)
 
 [G,P] = bode(l,m,w);
 
@@ -78,5 +80,8 @@ end
 
 % disp('hello');
 
+out_pjotera=filter(lz,mz,sygnal);
 figure(2);
-plot(t,sygnal,t,sygnal_out);
+plot(t,sygnal,t,sygnal_out,t,out_pjotera);
+figure(3);
+plot(t,abs(fft(sygnal)),t,abs(fft(sygnal_out)),t,abs(fft(out_pjotera)));
